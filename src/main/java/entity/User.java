@@ -1,15 +1,16 @@
 package entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-
 @Entity
-public class User implements Serializable {
+public class User implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String password;
-    private String name;
+    @GeneratedValue(strategy = GeneratedValue.Identity)
 }
+
+
