@@ -1,10 +1,12 @@
 package entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.io.Serializable;
 
 @Entity
+@Data
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1693850165739564098L;
@@ -16,4 +18,6 @@ public class User implements Serializable {
     private String password;
     @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
+    private String email;
 }
