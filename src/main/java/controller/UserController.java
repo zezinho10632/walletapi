@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import response.Response;
 
 @RestController
 @RequestMapping("user")
@@ -20,23 +21,22 @@ public class UserController {
     private UserService service;
 
     @PostMapping
-    public ResponseEntity<Response<UserDTO>> create(@Validated @RequestBody UserDto dto, BindingResult result)  {
+    public ResponseEntity<Response<UserDTO>> create(@Validated @RequestBody UserDTO dto, BindingResult result) {
 
-        Reponse<UserDto> reponse = new Reponse<UserDto>();
+        Response<UserDTO> response = new Response<UserDTO>();
 
         User user = service.save(this.convertDtoToEntity(dto));
 
-        response.setData(this.convertEntityToDto(user))
+        response.setData(this.convertEntityToDto(user));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
     }
 
     private User convertDtoToEntity(UserDTO dto) {
-        user u =new User();
+        User u = new User();
         u.setEmail(dto.getEmail());
         u.setName(dto.getName());
-        u.setPassword(dto.password);
+        u.setPassword(dto.getPassword());
 
         return u;
     }
@@ -45,8 +45,8 @@ public class UserController {
         UserDTO dto = new UserDTO();
         dto.setEmail(u.getEmail());
         dto.setName(u.getName());
-        dto.setPassword(u.password);
+        dto.setPassword(u.getPassword());
 
-        return  dto;
+        return dto;
     }
 }
