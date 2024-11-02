@@ -1,8 +1,9 @@
 package Controller;
 
 import Service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dto.UserDto;
+import dto.UserDTO;
 import entity.User;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,8 @@ public class UserControllerTest {
         u.setPassword(PASSWORD);
         return u;
     }
-    public String getJsonPayload() {
-        UserDto dto = new UserDto();
+    public String getJsonPayload() throws JsonProcessingException {
+        UserDTO dto = new UserDTO();
         dto.setEmail(EMAIL);
         dto.setName(NAME);
         dto.setPassword(PASSWORD);
