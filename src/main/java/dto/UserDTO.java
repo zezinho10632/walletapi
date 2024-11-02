@@ -1,10 +1,12 @@
 package dto;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
-public class UserDto {
+@Data
+public class UserDTO {
     private Long id;
     @Email(message="Email invalido")
     private String email;
