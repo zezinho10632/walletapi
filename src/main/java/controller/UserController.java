@@ -43,7 +43,7 @@ public class UserController {
         u.setId(dto.getId());
         u.setEmail(dto.getEmail());
         u.setName(dto.getName());
-        u.setPassword(BCrypt.hashpw().dto.getPassword());
+        u.setPassword(BCrypt.hashpw(dto.getPassword(), BCrypt.gensalt()));
 
         return u;
     }
