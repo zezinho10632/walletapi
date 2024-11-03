@@ -9,7 +9,14 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.repository")
 @EntityScan(basePackages = "entity")
-@ComponentScan(basePackages = {"Service", "Service.Impl", "controller", "Controller"})
+@ComponentScan(basePackages = {
+		"com.wallet",
+		"Service",
+		"Service.Impl",
+		"controller",
+		"Controller",
+		"SecurityConfiguration.security"  // Adicionando o pacote de segurança
+})
 public class WalletApplication {
 
 	public static void main(String[] args) {
